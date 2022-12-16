@@ -1,0 +1,637 @@
+function teleportTO(placeCFrame)
+    local plyr = game.Players.LocalPlayer;
+    if plyr.Character then
+        plyr.Character.HumanoidRootPart.CFrame = placeCFrame;
+    end
+end
+
+getgenv().Win = true;
+getgenv().Spam = true;
+getgenv().AutoBuy = true;
+getgenv().Spam1 = true;
+getgenv().Lag = true;
+getgenv().AutoCapture = true;
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Army tycoon--by jude/rev", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Announcements",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddParagraph("Announcements and shit","Am I really bringing this shit back?,oh well enjoy fuck-tards")
+
+
+
+
+
+
+
+-- actual Shit
+
+
+local Tab = Window:MakeTab({
+	Name = "Random stuff",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+
+Tab:AddToggle({
+	Name = "Spam nukes mid",
+	Default = (bool),
+	Callback = function(bool)
+		getgenv().Spam = bool
+		print(bool)
+		if bool then
+		Spam()
+		end
+	end    
+    
+})
+
+
+Tab:AddToggle({
+	Name = "AutoCapture mid",
+	Default = (bool),
+	Callback = function(bool)
+		getgenv().AutoCapture = bool
+		print(bool)
+		if bool then
+		AutoCapture()
+		end
+	end    
+    
+})
+
+
+
+
+
+
+
+Tab:AddToggle({
+	Name = "Lag server",
+	Default = (bool),
+	Callback = function(bool)
+		getgenv().Lag = bool
+		print(bool)
+		if bool then
+		Lag()
+		end
+	end    
+    
+})
+
+
+
+Tab:AddToggle({
+	Name = "Auto rebirth and buy all",
+	Default = (bool),
+	Callback = function(bool)
+		getgenv().Win = bool
+		print(bool)
+		if bool then
+		Win()
+		end
+	end    
+    
+})
+
+Tab:AddToggle({
+	Name = "Spam nukes at all captures",
+	Default = (bool),
+	Callback = function(bool)
+		getgenv().Spam1 = bool
+		print(bool)
+		if bool then
+		Spam1()
+		end
+	end    
+    
+})
+
+
+Tab:AddButton({
+	Name = "Kill all units",
+	Callback = function()
+      		for i,v in pairs(game.Workspace.Game.Units:GetChildren()) do
+if v.Name == game.Players.LocalPlayer.Name then
+else
+for i,v2 in pairs(v:GetChildren()) do
+local Missile = "Cruise Missile"
+local Position = v2.Torso.Position
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(Missile, Position)
+end
+end
+end
+  	end    
+})
+
+
+
+
+Tab:AddButton({
+	Name = "Buy all buildings",
+	Callback = function()
+      		for i,v in pairs(game.Workspace.Game.Buttons:GetChildren()) do
+	if v.Name == game.Players.LocalPlayer.Name then
+		for i,v2 in pairs(v:GetChildren()) do
+			game:GetService("ReplicatedStorage").RE.relinquish:FireServer(v2, true)
+		end
+	end
+end
+ 
+for i,v in pairs(game.Workspace.Game.Buttons:GetChildren()) do
+	if v.Name == game.Players.LocalPlayer.Name then
+		for i,v2 in pairs(v:GetChildren()) do
+			for i,v3 in pairs(v2:GetChildren()) do
+				if v3:IsA("ObjectValue") then
+					v3.Name = v3.Value.Name
+				end
+			end
+		end
+	end
+end
+ 
+ 
+for i,v in pairs(game.Workspace.Game.Buttons:GetChildren()) do
+	if v.Name == game.Players.LocalPlayer.Name then
+		for i,v2 in pairs(v:GetChildren()) do
+			for i,v3 in pairs(v2:GetChildren()) do
+				if v3:IsA("ObjectValue") then
+					if v3.Name == "Barracks" then
+						local Class = game.ReplicatedStorage.Game.Buildings["Barracks"]["2"];
+						local Button = v2;
+						local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+						Target:FireServer(Class, Button);
+					else
+						if v3.Name == "Greenhouse" then
+							local Class = game.ReplicatedStorage.Game.Buildings["Greenhouse"]["2"];
+							local Button = v2;
+							local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+							Target:FireServer(Class, Button);
+						else
+							if v3.Name == "Factory" then
+									local Class = game.ReplicatedStorage.Game.Buildings["Factory"]["3"];
+									local Button = v2;
+									local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+									Target:FireServer(Class, Button);
+							else
+								if v3.Name == "Oil Field" then
+										local Class = game.ReplicatedStorage.Game.Buildings["Oil Field"]["2"];
+										local Button = v2;
+										local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+										Target:FireServer(Class, Button);
+								else
+									if v3.Name == "Guard Tower" then
+										local Class = game.ReplicatedStorage.Game.Buildings["Guard Tower"]["1"];
+										local Button = v2;
+										local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+										Target:FireServer(Class, Button);
+									else
+										if v3.Name == "Wall" then
+											local Class = game.ReplicatedStorage.Game.Buildings["Wall"]["2"];
+											local Button = v2;
+											local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+											Target:FireServer(Class, Button);
+										else
+											if v3.Name == "Generator Powerplant" then
+												local Class = game.ReplicatedStorage.Game.Buildings["Generator Powerplant"]["1"];
+												local Button = v2;
+												local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+												Target:FireServer(Class, Button);
+											else
+												if v3.Name == "Missile Factory" then
+													local Class = game.ReplicatedStorage.Game.Buildings["Missile Factory"]["1"];
+													local Button = v2;
+													local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+													Target:FireServer(Class, Button);
+												else
+													if v3.Name == "Command Center" then
+														local Class = game.ReplicatedStorage.Game.Buildings["Command Center"]["2"];
+														local Button = v2;
+														local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+														Target:FireServer(Class, Button);
+													else
+														if v3.Name == "Drone Factory" then
+															local Class = game.ReplicatedStorage.Game.Buildings["Drone Factory"]["1"];
+															local Button = v2;
+															local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+															Target:FireServer(Class, Button);
+														else
+															if v3.Name == "Military" then
+																local Class = game.ReplicatedStorage.Game.Buildings.Military["Tank Factory"]["2"];
+																local Button = v2;
+																local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																Target:FireServer(Class, Button);
+															else
+																if v3.Name == "Nuclear Powerplant" then
+																	local Class = game.ReplicatedStorage.Game.Buildings["Nuclear Powerplant"]["1"];
+																	local Button = v2;
+																	local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																	Target:FireServer(Class, Button);
+																else
+																	if v3.Name == "Airport" then
+																		local Class = game.ReplicatedStorage.Game.Buildings["Airport"]["1"];
+																		local Button = v2;
+																		local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																		Target:FireServer(Class, Button);
+																	else
+																		if v3.Name == "Helicopter Bay" then
+																			local Class = game.ReplicatedStorage.Game.Buildings["Helicopter Bay"]["2"];
+																			local Button = v2;
+																			local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																			Target:FireServer(Class, Button);
+																		else
+																			if v3.Name == "Main Base" then
+																				local Class = game.ReplicatedStorage.Game.Buildings["Main Base"]["2"];
+																				local Button = v2;
+																				local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																				Target:FireServer(Class, Button);
+																			end
+																		end
+																	end
+																end
+															end
+														end
+													end
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+  	end    
+})
+
+
+
+
+
+
+
+function Spam()
+    while getgenv().Spam == true do
+ wait()
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(621.2628173828125, 48.664913177490234, 1997.4449462890625)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+
+end
+
+end
+
+        
+        
+        
+	
+	
+	
+	
+	function Spam1()
+    while getgenv().Spam1 == true do
+ wait()
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(621.2628173828125, 48.664913177490234, 1997.4449462890625)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+wait()
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(608.57421875, 52.41518020629883, 1832.4620361328125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+wait()
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(596.7792358398438, 49.104183197021484, 2158.993408203125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+wait()
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(429.4612121582031, 51.97167205810547, 1990.9661865234375)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+wait()
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(745.1155395507812, 51.87980651855469, 1990.6142578125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+end
+
+end
+
+function Lag()
+    while  getgenv().Lag == true do
+        wait()
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(135.1014862060547, 70.05177307128906, 1816.157470703125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(420.58929443359375, 48.664913177490234, 1711.501220703125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(852.0606689453125, 54.05881881713867, 2029.970947265625)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(571.3463745117188, 48.664913177490234, 2364.990234375)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(257.1501770019531, 50.66073226928711, 2049.23291015625)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(621.2628173828125, 48.664913177490234, 1997.4449462890625)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(608.57421875, 52.41518020629883, 1832.4620361328125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(596.7792358398438, 49.104183197021484, 2158.993408203125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(429.4612121582031, 51.97167205810547, 1990.9661865234375)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(745.1155395507812, 51.87980651855469, 1990.6142578125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+local args = {
+    [1] = "Nuke",
+    [2] = Vector3.new(622.1356811523438, 48.90001678466797, 1623.421142578125)
+}
+
+game:GetService("ReplicatedStorage").RE.FireMissile:FireServer(unpack(args))
+
+
+
+end
+end
+
+function Win()
+    while getgenv().Win == true do
+        wait()
+        for i,v in pairs(game.Workspace.Game.Buttons:GetChildren()) do
+	if v.Name == game.Players.LocalPlayer.Name then
+		for i,v2 in pairs(v:GetChildren()) do
+			game:GetService("ReplicatedStorage").RE.relinquish:FireServer(v2, true)
+		end
+	end
+end
+ 
+for i,v in pairs(game.Workspace.Game.Buttons:GetChildren()) do
+	if v.Name == game.Players.LocalPlayer.Name then
+		for i,v2 in pairs(v:GetChildren()) do
+			for i,v3 in pairs(v2:GetChildren()) do
+				if v3:IsA("ObjectValue") then
+					v3.Name = v3.Value.Name
+				end
+			end
+		end
+	end
+end
+ 
+ 
+for i,v in pairs(game.Workspace.Game.Buttons:GetChildren()) do
+	if v.Name == game.Players.LocalPlayer.Name then
+		for i,v2 in pairs(v:GetChildren()) do
+			for i,v3 in pairs(v2:GetChildren()) do
+				if v3:IsA("ObjectValue") then
+					if v3.Name == "Barracks" then
+						local Class = game.ReplicatedStorage.Game.Buildings["Barracks"]["2"];
+						local Button = v2;
+						local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+						Target:FireServer(Class, Button);
+					else
+						if v3.Name == "Greenhouse" then
+							local Class = game.ReplicatedStorage.Game.Buildings["Greenhouse"]["2"];
+							local Button = v2;
+							local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+							Target:FireServer(Class, Button);
+						else
+							if v3.Name == "Factory" then
+									local Class = game.ReplicatedStorage.Game.Buildings["Factory"]["3"];
+									local Button = v2;
+									local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+									Target:FireServer(Class, Button);
+							else
+								if v3.Name == "Oil Field" then
+										local Class = game.ReplicatedStorage.Game.Buildings["Oil Field"]["2"];
+										local Button = v2;
+										local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+										Target:FireServer(Class, Button);
+								else
+									if v3.Name == "Guard Tower" then
+										local Class = game.ReplicatedStorage.Game.Buildings["Guard Tower"]["1"];
+										local Button = v2;
+										local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+										Target:FireServer(Class, Button);
+									else
+										if v3.Name == "Wall" then
+											local Class = game.ReplicatedStorage.Game.Buildings["Wall"]["2"];
+											local Button = v2;
+											local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+											Target:FireServer(Class, Button);
+										else
+											if v3.Name == "Generator Powerplant" then
+												local Class = game.ReplicatedStorage.Game.Buildings["Generator Powerplant"]["1"];
+												local Button = v2;
+												local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+												Target:FireServer(Class, Button);
+											else
+												if v3.Name == "Missile Factory" then
+													local Class = game.ReplicatedStorage.Game.Buildings["Missile Factory"]["1"];
+													local Button = v2;
+													local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+													Target:FireServer(Class, Button);
+												else
+													if v3.Name == "Command Center" then
+														local Class = game.ReplicatedStorage.Game.Buildings["Command Center"]["2"];
+														local Button = v2;
+														local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+														Target:FireServer(Class, Button);
+													else
+														if v3.Name == "Drone Factory" then
+															local Class = game.ReplicatedStorage.Game.Buildings["Drone Factory"]["1"];
+															local Button = v2;
+															local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+															Target:FireServer(Class, Button);
+														else
+															if v3.Name == "Military" then
+																local Class = game.ReplicatedStorage.Game.Buildings.Military["Tank Factory"]["2"];
+																local Button = v2;
+																local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																Target:FireServer(Class, Button);
+															else
+																if v3.Name == "Nuclear Powerplant" then
+																	local Class = game.ReplicatedStorage.Game.Buildings["Nuclear Powerplant"]["1"];
+																	local Button = v2;
+																	local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																	Target:FireServer(Class, Button);
+																else
+																	if v3.Name == "Airport" then
+																		local Class = game.ReplicatedStorage.Game.Buildings["Airport"]["1"];
+																		local Button = v2;
+																		local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																		Target:FireServer(Class, Button);
+																	else
+																		if v3.Name == "Helicopter Bay" then
+																			local Class = game.ReplicatedStorage.Game.Buildings["Helicopter Bay"]["2"];
+																			local Button = v2;
+																			local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																			Target:FireServer(Class, Button);
+																		else
+																			if v3.Name == "Main Base" then
+																				local Class = game.ReplicatedStorage.Game.Buildings["Main Base"]["2"];
+																				local Button = v2;
+																				local Target = game:GetService("ReplicatedStorage").RE.insertBuilding;
+																				Target:FireServer(Class, Button);
+																			end
+																		end
+																	end
+																end
+															end
+														end
+													end
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+wait(5)
+game:GetService("ReplicatedStorage").RE.rebirth:FireServer()
+end
+end
+        
+        
+        
+        
+        function AutoCapture()
+            while getgenv().AutoCapture == true do
+                wait()
+local args = {
+    [1] = workspace.Game.Base.Interactives.CapturePoint,
+    [2] = true
+}
+
+game:GetService("ReplicatedStorage").RE.StartCapturing:FireServer(unpack(args))
+end
+end
+
+
+        
+        
+        
+        
+        
+loadstring(game:HttpGet("https://raw.githubusercontent.com/jj123llol/My-personal-admin/main/admin",true))()
